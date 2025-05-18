@@ -1,0 +1,30 @@
+services:
+
+  db:
+    image: postgres:14.3
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+    ports: '5432:5432'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+  nginx:
+    image: nginx:1.27.5-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+#      - ./nginx/html:/usr/share/nginx/html
+
+
+volumes:
+  pgdata:
