@@ -2,12 +2,15 @@ services:
 
   db:
     image: postgres:14.3
+    container_name: database
     environment:
       POSTGRES_USER: example
+      PGUSER: example
       POSTGRES_PASSWORD: example
     volumes:
       - pgdata:/var/lib/postgresql/data 
-    ports: '5432:5432'
+    ports:
+     - 5432:5432
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 1s
@@ -15,12 +18,14 @@ services:
       retries: 10
   adminer:
     image: adminer
+    container_name: adminer
     ports:
       - 8080:8080
   nginx:
     image: nginx:1.27.5-alpine
+    container_name: nginx
     ports:
-      - "80:80"
+      - 80:80
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
 #      - ./nginx/html:/usr/share/nginx/html
