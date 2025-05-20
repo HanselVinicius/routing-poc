@@ -1,5 +1,5 @@
 import { Controller, Get, HttpCode, Post } from "@nestjs/common";
-import { Product } from "src/domain/Product";
+import { Product } from "../../domain/Product";
 
 @Controller()
 export class ProductController{
