@@ -7,7 +7,7 @@ export class Product{
     id:BigInt;
     @Column({ type: "uuid", default: () => "uuid_generate_v4()" })
     sku:String;
-    @Column()
+    @Column({type: "money"})
     price:BigInt;
     @Column()
     name:String;
