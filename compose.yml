@@ -28,8 +28,44 @@ services:
       - 80:80
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-#      - ./nginx/html:/usr/share/nginx/html
+      - ./frontend:/usr/share/nginx/html
+  api:
+    build:
+      context: ./backend/routing-poc-backend
+      dockerfile: Dockerfile
+    container_name: node-app
+    environment:
+      - INSTANCE_ID=root
+      - PORT=3000
+      - DB_USER=example
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=routing_poc
+    expose:
+      - "3000"
+    depends_on:
+      - db
 
+  api-replica:
+    build:
+      context: ./backend/routing-poc-backend
+      dockerfile: Dockerfile
+    container_name: node-app-replica
+    environment:
+      - INSTANCE_ID=replica
+      - PORT=3000
+      - DB_USER=example
+      - DB_PASSWORD=example
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=routing_poc
+    expose:
+      - "3000"
+    depends_on:
+      - db
+  
+    
 
 volumes:
   pgdata:

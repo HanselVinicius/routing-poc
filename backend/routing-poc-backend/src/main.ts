@@ -17,6 +17,6 @@ async function bootstrap() {
 bootstrap();
 
 function logMiddleware(_req: Request, _res: Response, next: NextFunction) {
-  Logger.log(`Request Hitted the app with port number: ${process.env.PORT}`, 'Main');
+  Logger.log(`Request Hitted the app with id: ${process.env.INSTANCE_ID}`, 'Main');
   next();
 }
