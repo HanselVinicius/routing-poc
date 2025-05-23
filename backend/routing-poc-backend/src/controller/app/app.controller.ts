@@ -6,7 +6,7 @@ export class AppController {
 
   @Get()
   @HttpCode(200)
-  public health(): string {
-    return "Healthy state!"
+  public health(): {satus:string} {
+    return {satus:"Healthy"}
   }
 }

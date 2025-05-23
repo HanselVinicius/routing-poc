@@ -1,14 +1,13 @@
-import { Entity,Column,PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
-export class Product{   
-
+export class Product {
     @PrimaryGeneratedColumn()
-    id:BigInt;
-    @Column({ type: "uuid", default: () => "uuid_generate_v4()" })
-    sku:String;
-    @Column({type: "money"})
-    price:BigInt;
+    id: BigInt;
+    @Column({ type: "uuid" })
+    sku: String;
+    @Column({ type: "money" })
+    price: BigInt;
     @Column()
-    name:String;
+    name: String;
 }
