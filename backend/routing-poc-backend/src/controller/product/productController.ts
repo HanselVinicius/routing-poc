@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Inject, NotFoundException, Param, Post, Res, UsePipes } from "@nestjs/common";
+import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Logger, NotFoundException, Param, Post, Res, UsePipes } from "@nestjs/common";
 import { Product } from "../../domain/Product";
 import { CreateProductService, ICreateProductService } from "../../domain/service/createProductService";
 import { CreateProductDto } from "../../domain/dto/createProductDto";
@@ -20,6 +20,7 @@ export class ProductController{
     @Get(':sku')
     @HttpCode(200)
     public async getProducts(@Param("sku") sku:string): Promise<Product>{
+        Logger.log(`querying for product with sku ${sku}`,ProductController.name);
         const foundProduct = await this.findProductService.findProductBySku(sku);
         if(!foundProduct){
             throw new NotFoundException(`product with sku ${sku} not found`);

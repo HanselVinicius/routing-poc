@@ -14,7 +14,7 @@ describe('AppController', () => {
 
   describe('health route', () => {
     it('should return "Healthy state!!"', () => {
-      expect(appController.health()).toBe("Healthy state!");
+      expect(appController.health()).toBe({status:"Healthy"});
     });
   });
 });
