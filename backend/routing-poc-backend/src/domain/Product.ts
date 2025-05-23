@@ -1,13 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product {
-    @PrimaryGeneratedColumn()
-    id: BigInt;
-    @Column({ type: "uuid" })
-    sku: String;
-    @Column({ type: "money" })
-    price: BigInt;
-    @Column()
-    name: String;
+  @PrimaryGeneratedColumn()
+  id: bigint;
+  @Column({ type: 'uuid' })
+  sku: string;
+  @Column({ type: 'money' })
+  price: bigint;
+  @Column()
+  name: string;
 }

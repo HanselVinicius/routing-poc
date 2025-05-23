@@ -5,11 +5,7 @@ import { DatabaseModule } from './database.module';
 import { ProductModule } from './product.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(),
-    DatabaseModule,
-    ProductModule
-  ],
+  imports: [ConfigModule.forRoot(), DatabaseModule, ProductModule],
   controllers: [AppController],
 })
 export class AppModule {}

@@ -16,7 +16,7 @@ describe('FindProductUseCase', () => {
 
   it('should return product if found by sku', async () => {
     const mockProduct = {
-      id:BigInt(1),
+      id: BigInt(1),
       sku: '123',
       name: 'Banana Premium',
       price: BigInt(1000),
@@ -36,6 +36,8 @@ describe('FindProductUseCase', () => {
     const result = await findProductUseCase.findProductBySku('not-found');
 
     expect(result).toBeNull();
-    expect(productRepository.findOneBy).toHaveBeenCalledWith({ sku: 'not-found' });
+    expect(productRepository.findOneBy).toHaveBeenCalledWith({
+      sku: 'not-found',
+    });
   });
 });

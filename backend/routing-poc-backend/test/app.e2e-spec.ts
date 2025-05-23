@@ -10,7 +10,7 @@ describe('AppController (e2e)', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule,DatabaseModule],
+      imports: [AppModule, DatabaseModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
@@ -21,6 +21,6 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect({status:"Healthy"});
+      .expect({ status: 'Healthy' });
   });
 });
