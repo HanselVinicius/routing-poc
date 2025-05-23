@@ -1,5 +1,3 @@
----
-
 ## 🚀 **POC com Nginx: Servindo Arquivos Estáticos e Reverse Proxy**
 
 ### 📌 **Descrição**
